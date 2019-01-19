@@ -1,0 +1,31 @@
+{
+  "name": "s3s",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-server": "tsc -p .",
+    "build-client": "cd www && webpack",
+    "build": "npm run build-server && npm run build-client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giuliojiang/s3s.git"
+  },
+  "author": "giuliojiang",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/giuliojiang/s3s/issues"
+  },
+  "homepage": "https://github.com/giuliojiang/s3s#readme",
+  "devDependencies": {
+    "@types/node": "^10.12.18",
+    "typescript": "^3.2.4",
+    "webpack": "^4.28.4"
+  },
+  "dependencies": {
+    "@types/express": "^4.16.0",
+    "express": "^4.16.4",
+    "webpack-cli": "^3.2.1"
+  }
+}
