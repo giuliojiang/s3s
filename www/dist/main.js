@@ -81,30 +81,11 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _elements_root__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _elements_root__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_elements_root__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _elements_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
-/* harmony import */ var _elements_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_elements_router__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _elements_home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
-/* harmony import */ var _elements_home__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_elements_home__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _elements_navbar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
-/* harmony import */ var _elements_navbar__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_elements_navbar__WEBPACK_IMPORTED_MODULE_3__);
-
-
-
-
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports) {
 
 window.customElements.define("s3s-root", class extends HTMLElement {
@@ -128,7 +109,7 @@ window.customElements.define("s3s-root", class extends HTMLElement {
 
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, exports) {
 
 window.customElements.define("s3s-router", class extends HTMLElement {
@@ -141,13 +122,15 @@ window.customElements.define("s3s-router", class extends HTMLElement {
         let route = "s3s-home";
         let routePath = [];
         let path = location.pathname;
+        console.info("location.pathname is " + path);
         if (path == "/") {
             // do nothing
         } else {
             let splt = path.split("/");
-            route = splt[0];
+            console.info("splt is " + JSON.stringify(splt));
+            route = splt[1];
             let remaining = [];
-            for (let i = 1; i < splt.length; i++) {
+            for (let i = 2; i < splt.length; i++) {
                 remaining.push(splt[i]);
             }
             routePath = remaining;
@@ -162,25 +145,7 @@ window.customElements.define("s3s-router", class extends HTMLElement {
 
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-window.customElements.define("s3s-home", class extends HTMLElement {
-
-    constructor() {
-        super();
-    }
-
-    connectedCallback() {
-        this.innerHTML = `
-            <div>s3s-home rendered</div>
-        `;
-    }
-
-});
-
-/***/ }),
-/* 4 */
+/* 2 */
 /***/ (function(module, exports) {
 
 window.customElements.define("s3s-navbar", class extends HTMLElement {
@@ -231,6 +196,127 @@ window.customElements.define("s3s-navbar", class extends HTMLElement {
     }
 
 });
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+// EXTERNAL MODULE: ./src/elements/root.js
+var root = __webpack_require__(0);
+
+// EXTERNAL MODULE: ./src/elements/router.js
+var router = __webpack_require__(1);
+
+// CONCATENATED MODULE: ./src/util/token.js
+var s3sToken = {};
+
+// Resolves only when token is set
+s3sToken.tokenPromise = new Promise((resolve, reject) => {
+    if (sessionStorage.token != null) {
+        resolve();
+    } else {
+        s3sToken.onTokenSet = () => {
+            resolve();
+        }        
+    }
+});
+
+s3sToken.setToken = (token) => {
+    if (sessionStorage.token == null) {
+        // Setting the new token
+        sessionStorage.token = token;
+        s3sToken.onTokenSet();
+    } else {
+        // Replacing an existing token
+        sessionStorage.token = token;
+        window.location.reload();
+    }
+};
+
+
+// CONCATENATED MODULE: ./src/elements/home.js
+
+
+window.customElements.define("s3s-home", class extends HTMLElement {
+
+    constructor() {
+        super();
+    }
+
+    connectedCallback() {
+        this.render();
+    }
+
+    async render() {
+        this.innerHTML = /*html*/`
+            <style>
+                .s3s-home-container {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    width: 100%;
+                    padding: 10px;
+                }
+
+                .s3s-home-input-div {
+                    width: 50%;
+                }
+
+                .s3s-home-input {
+                    border: 0;
+                    margin: 0;
+                    padding: 10px;
+                    width: 100%;
+                }
+            </style>
+        `;
+
+        let container = document.createElement("div");
+        this.appendChild(container);
+        container.classList.add("s3s-home-container");
+
+        let tokenDiv = document.createElement("div");
+        tokenDiv.classList.add("s3s-home-input-div");
+        container.appendChild(tokenDiv);
+
+        let tokenInput = document.createElement("input");
+        tokenInput.setAttribute("type", "text");
+        tokenInput.setAttribute("placeholder", "magic token");
+        tokenInput.classList.add("s3s-home-input");
+        tokenDiv.appendChild(tokenInput);
+        tokenInput.addEventListener("keyup", e => {
+            e.stopPropagation();
+            let code = e.keyCode;
+            if (code == 13) {
+                // ENTER
+                let inputValue = tokenInput.value;
+                console.info(`inputValue is ${inputValue}`);
+                s3sToken.setToken(inputValue);
+            }
+        });
+
+        await s3sToken.tokenPromise;
+
+        console.info("tokenPromise resolved!");
+
+        let collectionsDiv = document.createElement("div");
+        collectionsDiv.innerText = "Collections!";
+        container.appendChild(collectionsDiv);
+    }
+
+});
+// EXTERNAL MODULE: ./src/elements/navbar.js
+var navbar = __webpack_require__(2);
+
+// CONCATENATED MODULE: ./src/index.js
+
+
+
+
 
 /***/ })
 /******/ ]);

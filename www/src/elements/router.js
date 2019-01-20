@@ -8,13 +8,15 @@ window.customElements.define("s3s-router", class extends HTMLElement {
         let route = "s3s-home";
         let routePath = [];
         let path = location.pathname;
+        console.info("location.pathname is " + path);
         if (path == "/") {
             // do nothing
         } else {
             let splt = path.split("/");
-            route = splt[0];
+            console.info("splt is " + JSON.stringify(splt));
+            route = splt[1];
             let remaining = [];
-            for (let i = 1; i < splt.length; i++) {
+            for (let i = 2; i < splt.length; i++) {
                 remaining.push(splt[i]);
             }
             routePath = remaining;
