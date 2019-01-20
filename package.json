@@ -1,7 +1,7 @@
 {
   "name": "s3s",
   "version": "1.0.0",
-  "description": "",
+  "description": "Minimalistic file sharing based on MongoDB and AWS S3",
   "main": "index.js",
   "scripts": {
     "build-server": "tsc -p .",
@@ -25,10 +25,13 @@
   },
   "dependencies": {
     "@types/body-parser": "^1.17.0",
+    "@types/crypto-random-string": "^1.0.0",
     "@types/express": "^4.16.0",
     "@types/jsdom": "^12.2.1",
     "@types/mongodb": "^3.1.19",
+    "aws-sdk": "^2.391.0",
     "body-parser": "^1.18.3",
+    "crypto-random-string": "^1.0.0",
     "express": "^4.16.4",
     "jsdom": "^13.1.0",
     "mongodb": "^3.1.12",

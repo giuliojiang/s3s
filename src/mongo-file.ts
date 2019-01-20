@@ -7,6 +7,7 @@ export interface FileModel {
     id?: string;
     name: string;
     collectionid: string;
+    s3id: string; // filename as stored in S3
 }
 
 export class MongoFile {
@@ -18,6 +19,7 @@ export class MongoFile {
         let mongoResult = await collection.insertOne({
             collectionid: data.collectionid,
             name: data.name,
+            s3id: data.s3id
         });
 
         return mongoResult.insertedId.toString();
@@ -38,6 +40,7 @@ export class MongoFile {
                 collectionid: doc.collectionid,
                 id: doc._id.toString(),
                 name: doc.name,
+                s3id: doc.s3id,
             };
         });
 
@@ -59,6 +62,7 @@ export class MongoFile {
                 collectionid: doc.collectionid,
                 id: doc._id.toString(),
                 name: doc.name,
+                s3id: doc.s3id
             };
             return result;
         }

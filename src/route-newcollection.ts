@@ -21,12 +21,14 @@ export class RouteNewCollection {
 
                 let body = req.body;
                 let newCollectionName: string = body.name;
-                await MongoCollection.createCollection({
+                let collectionid = await MongoCollection.createCollection({
                     created: new Date(),
                     name: newCollectionName
                 });
 
-                res.sendStatus(200);
+                res.send(JSON.stringify({
+                    collectionid: collectionid
+                }));
 
             } catch (err) {
                 res.sendStatus(500);

@@ -22,7 +22,7 @@ Upload button for file select
 
 ## file
 
-id, name, collectionid
+id, s3id, name, collectionid
 
 ## collection
 
@@ -41,6 +41,8 @@ S3S-api-upload-collectionid
 S3S-api-upload-filename
 ```
 
+Body: binary content of the file to be uploaded
+
 ## POST /api/newcollection
 
 create a new collection if not exists
@@ -50,6 +52,14 @@ POST body schema
 ```
 {
     name: string
+}
+```
+
+POST response
+
+```
+{
+    collectionid: string
 }
 ```
 
