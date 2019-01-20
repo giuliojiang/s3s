@@ -26,7 +26,7 @@ id, name, collectionid
 
 ## collection
 
-id, name
+id, name, created
 
 # backend
 
@@ -34,9 +34,24 @@ id, name
 
 upload a file
 
+additional request headers:
+
+```
+S3S-api-upload-collectionid
+S3S-api-upload-filename
+```
+
 ## POST /api/newcollection
 
 create a new collection if not exists
+
+POST body schema
+
+```
+{
+    name: string
+}
+```
 
 # s3
 
