@@ -1,4 +1,4 @@
-export interface IS3SConf {
+export interface S3SConf {
     adminToken: string;
     bucket: string;
     uploadDir: string;
@@ -6,8 +6,8 @@ export interface IS3SConf {
     mongoDb: string;
 }
 export declare class Conf {
-    static set(conf: IS3SConf): void;
-    static get(): IS3SConf;
+    static set(conf: S3SConf): void;
+    static get(): S3SConf;
     private static conf;
 }
 //# sourceMappingURL=conf.d.ts.map

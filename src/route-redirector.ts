@@ -4,6 +4,7 @@ import * as path from "path";
 const redirectorHandler = (): express.Express => {
     const knownRoutes: Set<string> = new Set<string>();
     knownRoutes.add("s3s-home");
+    knownRoutes.add("s3s-upload");
 
     const app = express();
 

@@ -1,0 +1,1 @@
+{"version":3,"file":"route-upload.d.ts","sourceRoot":"","sources":["../src/route-upload.ts"],"names":[],"mappings":"AACA,OAAO,OAAO,GAAG,QAAQ,SAAS,CAAC,CAAC;AAWpC,qBAAa,WAAW;WAEN,eAAe,IAAI,IAAI;WAYvB,SAAS,IAAI,OAAO,CAAC,OAAO;IAkE1C,OAAO,CAAC,MAAM,CAAC,gBAAgB,CAAkB;CAEpD"}

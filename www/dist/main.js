@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -199,6 +199,28 @@ window.customElements.define("s3s-navbar", class extends HTMLElement {
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+window.customElements.define("s3s-upload", class extends HTMLElement {
+
+    constructor() {
+        super();
+    }
+
+    connectedCallback() {
+        this.render();
+    }
+
+    render() {
+        this.innerHTML = /*html*/`
+            <div>upload rendered</div>
+        `;
+    }
+
+});
+
+/***/ }),
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -312,7 +334,11 @@ window.customElements.define("s3s-home", class extends HTMLElement {
 // EXTERNAL MODULE: ./src/elements/navbar.js
 var navbar = __webpack_require__(2);
 
+// EXTERNAL MODULE: ./src/elements/upload.js
+var upload = __webpack_require__(3);
+
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 

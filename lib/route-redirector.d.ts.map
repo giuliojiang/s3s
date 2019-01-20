@@ -1,1 +1,1 @@
-{"version":3,"file":"route-redirector.d.ts","sourceRoot":"","sources":["../src/route-redirector.ts"],"names":[],"mappings":"AAAA,OAAO,OAAO,GAAG,QAAQ,SAAS,CAAC,CAAC;AAGpC,QAAA,MAAM,iBAAiB,uBAkBtB,CAAC;AAEF,OAAO,EACH,iBAAiB,GACpB,CAAC"}
+{"version":3,"file":"route-redirector.d.ts","sourceRoot":"","sources":["../src/route-redirector.ts"],"names":[],"mappings":"AAAA,OAAO,OAAO,GAAG,QAAQ,SAAS,CAAC,CAAC;AAGpC,QAAA,MAAM,iBAAiB,uBAmBtB,CAAC;AAEF,OAAO,EACH,iBAAiB,GACpB,CAAC"}
