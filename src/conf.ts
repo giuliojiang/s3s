@@ -3,6 +3,7 @@ export interface IS3SConf {
     bucket: string;
     uploadDir: string;
     mongoUrl: string;
+    mongoDb: string;
 }
 
 export class Conf {
