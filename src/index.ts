@@ -2,7 +2,6 @@ import express = require("express");
 import * as path from "path";
 import { Conf, S3SConf } from "./conf";
 import { Mongo } from "./mongo";
-import { redirectorHandler } from "./route-redirector";
 import { RouteUpload } from "./route-upload";
 import * as s3 from "./s3";
 
@@ -16,10 +15,8 @@ const createApp = async (config: S3SConf): Promise<express.Express> => {
     const app = express();
 
     app.get("/", (req, res) => {
-        res.redirect("/s3s-home");
+        res.redirect("/index.html");
     });
-
-    app.use(redirectorHandler());
 
     app.use("/", express.static(path.resolve(__dirname, "..", "www")));
 

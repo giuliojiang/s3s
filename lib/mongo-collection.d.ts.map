@@ -1,1 +1,0 @@
-{"version":3,"file":"mongo-collection.d.ts","sourceRoot":"","sources":["../src/mongo-collection.ts"],"names":[],"mappings":"AAIA,MAAM,WAAW,eAAe;IAC5B,EAAE,CAAC,EAAE,MAAM,CAAC;IACZ,IAAI,EAAE,MAAM,CAAC;IACb,OAAO,EAAE,IAAI,CAAC;CACjB;AAED,qBAAa,eAAe;WAEJ,gBAAgB,CAAC,IAAI,EAAE,eAAe,GAAG,OAAO,CAAC,MAAM,CAAC;WAYxD,cAAc,IAAI,OAAO,CAAC,eAAe,EAAE,CAAC;CAsBnE"}
